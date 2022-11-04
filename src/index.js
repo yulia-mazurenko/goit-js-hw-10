@@ -5,7 +5,7 @@ import { fetchCountries } from './fetchCountries.js'
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 
-const DEBOUNCE_DELAY = 500;
+const DEBOUNCE_DELAY = 300;
 let getEl = selector => document.querySelector(selector)
 
 getEl('#search-box').addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY))
