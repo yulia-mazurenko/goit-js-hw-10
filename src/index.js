@@ -30,9 +30,9 @@ function resetData() {
 
 function renderMarkup(data) {
     
-    if (data.message === 'Not Found') {
-       onFetchError() 
-    }
+    // if (data.message === 'Not Found') {
+    //    onFetchError() 
+    // }
        
     if (data.length > 10) {
         onDisplayNotification()        
