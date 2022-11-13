@@ -10,7 +10,7 @@ let getEl = selector => document.querySelector(selector)
 
 getEl('#search-box').addEventListener('input', debounce(onFormInput, DEBOUNCE_DELAY))
 
-function onFormInput(e) {
+async function onFormInput(e) {
     resetData();
 
     let searchingCountry = (e.target.value).trim();
@@ -19,9 +19,14 @@ function onFormInput(e) {
          resetData()
         return
     } 
-       
-    fetchCountries(searchingCountry).then(renderMarkup).catch(onFetchError)  
-}
+
+try {
+     const data = await fetchCountries(searchingCountry);
+    renderMarkup(data) 
+} catch (error) {
+    onFetchError(error)
+}      
+    }
 
 function resetData() {
     getEl('.country__list').innerHTML = '';
